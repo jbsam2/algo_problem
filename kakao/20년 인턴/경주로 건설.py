@@ -15,13 +15,10 @@ def solution(board):
             ny = y + dy[dire]
             nx = x + dx[dire]
 
-            # 경계체크
             if ny < 0 or nx < 0 or ny >= N or nx >= N:
                 continue
-            # 벽체크
             if board[ny][nx] == 1:
                 continue
-            # 뒤로가기 체크
             if abs(dire-d) == 2:
                 continue
             cost = 100 if dire == d else 600
