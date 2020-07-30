@@ -1,0 +1,8 @@
+tc = int(input())
+for t in range(1,tc+1):
+    n = int(input())
+    ans = 0.0
+    for i in range(n):
+        p, x = map(float,input().split())
+        ans += p*x
+    print(f'#{t} {ans}')

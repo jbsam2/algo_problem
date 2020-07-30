@@ -2,7 +2,6 @@ tc = int(input())
 for t in range(1, tc+1):
     n = int(input())
     data = input().replace('!',' !').replace('.',' .').replace('?',' ?').split()
-    print(data)
     count = 0
     res = ''
     for i in data:
