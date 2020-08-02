@@ -1,0 +1,1 @@
+for t in range(int(input())):l,u,x=map(int,input().split());print(f'#{t+1}',l-x if x<l else -1 if x>u else 0)

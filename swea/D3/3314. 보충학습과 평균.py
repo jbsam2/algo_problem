@@ -1,0 +1,1 @@
+for t in range(int(input())):s=[40 if i<40 else i for i in map(int,input().split())];print(f'#{t+1}',sum(s)//len(s))
