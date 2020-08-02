@@ -1,0 +1,1 @@
+print('\n'.join((f'#{i+1} {(int(input())-1)%9+1}'for i in range(int(input())))))
