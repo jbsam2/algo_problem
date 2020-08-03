@@ -1,14 +1,7 @@
 #include <iostream>
 using namespace std;
 int m[128];
-void init()
-{
-    for(int i=0; i<26; i++) m['A'+i]=i;
-    for(int i=0; i<26; i++) m['a'+i]=26+i;
-    for(int i=0; i<11; i++) m['0'+i]=52+i;
-    m['+'] = 62;
-    m['/'] = 63;
-}
+
 void decode(char* encode, char* decode)
 {
     int bits, pos=0, pos2=0;
@@ -27,7 +20,11 @@ void decode(char* encode, char* decode)
 
 int main()
 {
-    init();
+    for(int i=0; i<26; i++) m['A'+i]=i;
+    for(int i=0; i<26; i++) m['a'+i]=26+i;
+    for(int i=0; i<11; i++) m['0'+i]=52+i;
+    m['+'] = 62;
+    m['/'] = 63;
     int T;
     scanf("%d", &T);
     char encoded[100000];

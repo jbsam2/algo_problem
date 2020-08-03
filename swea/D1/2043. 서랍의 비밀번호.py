@@ -1,2 +1,1 @@
-p, k = input().split()
-print(int(p)-int(k)+1)
+n,m=map(int,input().split());print(n-m+1) if n>=m else print(n-m+1000)
