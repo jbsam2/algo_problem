@@ -6,7 +6,9 @@ for t in range(int(input())):
     for i in range(h):
         b.append([*input()])
         for j in range(w):
-            if b[i][j] in T:y,x=i,j;D=T.index(b[i][j])
+            if b[i][j] in T:
+                y,x=i,j
+                D=T.index(b[i][j])
     n=int(input());o=input()
     for c in o:
         if c=='S':
@@ -17,7 +19,11 @@ for t in range(int(input())):
                 p,q=p+Y[D],q+X[D]
         else:
             d=e[c];p,q=y+Y[d],x+X[d]
-            if -1<p<h and -1<q<w and b[p][q]=='.':b[y][x]='.';b[p][q]=T[d];y,x=p,q;D=d
+            if -1<p<h and -1<q<w and b[p][q]=='.':
+                b[y][x]='.'
+                b[p][q]=T[d]
+                y,x=p,q
+                D=d
             else:b[y][x]=T[d];D=d
     print(f'#{t}',end=" ")
     for i in b:print(*i,sep='')
