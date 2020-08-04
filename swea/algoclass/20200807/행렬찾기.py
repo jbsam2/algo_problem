@@ -18,8 +18,8 @@ for t in range(int(input())):
                 for k in range(i,i+h):
                     for l in range(j,j+w):
                         b[k][l]=0
-                a.append([h,w,h*w])
-    a=sorted(a,key=lambda x:(x[2],x[0]))
+                a.append([h,w])
+    a=sorted(a,key=lambda x:(x[0]*x[1],x[0]))
     print(f'#{t+1}',len(a),end=' ')
-    for r,c,_ in a:print(r,c,end=' ')
+    for r,c in a:print(r,c,end=' ')
     print()
