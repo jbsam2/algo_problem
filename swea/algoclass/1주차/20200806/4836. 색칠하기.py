@@ -1,23 +1,15 @@
 for t in range(int(input())):
-    n = int(input());r = [];b = []
+    n=int(input());r=[];b=[];a=[]
     for i in range(n):
-        y1, x1, y2, x2, color = map(int,input().split())
+        y1,x1,y2,x2,c=map(int,input().split())
         for y in range(y1,y2+1):
             for x in range(x1,x2+1):
-                if color == 1:
-                    r.append((y,x))
-                elif color == 2:
-                    b.append((y,x))
-
-    result = []
-    if len(r) > len(b):
+                if c==1:r.append((y,x))
+                elif c==2:b.append((y,x))    
+    if len(r)>len(b):
         for i in b:
-            if i in r:
-                result.append(i)
-
-    if len(r) < len(b):
+            if i in r:a.append(i)
+    if len(r)<len(b):
         for i in r:
-            if i in b:
-                result.append(i)
-
-    print('#{t+1}',len(result)))
+            if i in b:a.append(i)
+    print(f'#{t+1}',len(a))
