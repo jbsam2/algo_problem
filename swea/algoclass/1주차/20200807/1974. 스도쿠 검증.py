@@ -12,3 +12,4 @@ for t in range(int(input())) :
         if k(c[i])and k(r[i])and k(s[i]):continue
         else:a=0;break
     print(f'#{t+1}',a)
+    print()
