@@ -1,9 +1,9 @@
 def count(p,a):
-    s=1;f=p;g=a;c=0
+    s=1;f=p;c=0
     while s<=f:
         m=(s+f)//2
-        if m==g:break
-        elif m<g:s=m;c+=1
+        if m==a:break
+        elif m<a:s=m;c+=1
         else:f=m;c+=1
     return c
 for t in range(int(input())):
