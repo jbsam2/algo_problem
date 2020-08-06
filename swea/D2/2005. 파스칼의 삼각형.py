@@ -1,10 +1,6 @@
-p=[[1 for a in range(i)] for i in range(1,11)]
-for i in range(2,10):
-    for j in range(1,i):
-        p[i][j]=p[i-1][j-1]+p[i-1][j]
 for t in range(int(input())):
-    n=int(input());print(f'#{t+1}')
-    for i in range(n):
-        for j in range(len(p[i])):
-            print(p[i][j],end=' ')
-        print()
+    n=int(input());l=[[1 for i in range(1+j)] for j in range(n)]
+    for y in range(2,n):
+        for x in range(1,y):l[y][x]=l[y-1][x-1]+l[y-1][x]
+    print(f'#{t+1}')
+    for i in l:print(*i)

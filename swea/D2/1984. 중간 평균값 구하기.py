@@ -1,8 +1,1 @@
-t = int(input())
-
-for tc in range(1,t+1):
-    nums = list(map(int,input().split()))
-    nums.remove(max(nums))
-    nums.remove(min(nums))
-    avg = round(sum(nums)/len(nums))
-    print(f'#{tc} {avg}')
+for t in range(int(input())):n=list(map(int,input().split()));n.remove(max(n));n.remove(min(n));print(f'#{t+1}',round(sum(n)/len(n)))

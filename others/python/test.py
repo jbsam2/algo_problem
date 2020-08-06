@@ -1,11 +1,15 @@
-for t in range(1,int(input())+1):
-    n,q = map(int,input().split())
-    box = [0 for i in range(n)]
-    for i in range(q):
-        l,r = map(int,input().split())
-        for j in range(l,r+1):
-            box[j-1] = i+1
-    ret = ''
-    for i in box:
-        ret += str(i)+' '
-    print(f'#{t} {ret}')
+T = int(input())
+for tc in range(1,T+1):
+    N, M = map(int, input().split())
+    result = list(list(map(int, input().split())) for _ in range(N))
+ 
+# 오류 풀이
+    arr = []
+    for x in range(N-M+1):
+        for y in range(N-M + 1):            
+            total = 0
+            for k in range(x, x+M):
+                for j in range(y, y+M):
+                    total += result[k][j]
+            arr.append(total)    
+    print(f'#{tc} {max(arr)}')
