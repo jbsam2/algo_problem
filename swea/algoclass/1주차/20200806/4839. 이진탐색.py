@@ -1,4 +1,4 @@
-def count(p,a):
+def k(p,a):
     s=1;f=p;c=0
     while s<=f:
         m=(s+f)//2
@@ -8,7 +8,7 @@ def count(p,a):
     return c
 for t in range(int(input())):
     p,a,b=map(int,input().split())
-    i=count(p,a);j=count(p,b)
+    i=k(p,a);j=k(p,b)
     if i<j:print(f'#{t+1}','A')
     elif i>j:print(f'#{t+1}','B')
     else:print(f'#{t+1}',0)
