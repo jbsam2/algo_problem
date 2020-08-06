@@ -6,10 +6,6 @@ for t in range(int(input())):
             for x in range(x1,x2+1):
                 if c==1:r.append((y,x))
                 elif c==2:b.append((y,x))    
-    if len(r)>len(b):
-        for i in b:
-            if i in r:a.append(i)
-    if len(r)<len(b):
-        for i in r:
-            if i in b:a.append(i)
+    for i in b:
+        if i in r:a.append(i)
     print(f'#{t+1}',len(a))

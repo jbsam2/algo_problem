@@ -9,9 +9,7 @@ for t in range(int(input())):
                 for i in range(4):
                     nx=qq[0]+dx[i];ny=qq[1]+dy[i]
                     if 0<=nx<n and 0<=ny<n and b[nx][ny]-b[qq[0]][qq[1]]==1:cnt+=1;q.append((nx,ny))
-            if cnt>c:
-                c=cnt
-                r=b[x][y]
+            if cnt>c:c=cnt;r=b[x][y]
             elif cnt==c:
                 if b[x][y]<r:r=b[x][y] 
     print(f'#{t+1}',r,c)
