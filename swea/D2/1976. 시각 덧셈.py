@@ -1,12 +1,4 @@
-t = int(input())
-
-for tc in range(1,t+1):
-    time_list = list(map(int,input().split()))
-    ret_hour = time_list[0] + time_list[2]
-    ret_min = time_list[1] + time_list[3]
-    if ret_min >= 60:
-        ret_hour += 1
-        ret_min -= 60
-    if ret_hour > 12:
-        ret_hour -= 12
-    print(f'#{tc} {ret_hour} {ret_min}')
+for t in range(int(input())):
+    l=list(map(int,input().split()));h=l[0]+l[2];m=l[1]+l[3]
+    if m>=60:h+=1;m-=60
+    print(f'#{t+1}',(h-1)%12+1,m)
