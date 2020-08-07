@@ -1,1 +1,1 @@
-for t in range(10):input();b=[list(map(int, input().split()))for _ in range(100)];print(f'#{t+1}',max(max(sum(i)for i in b),max(sum(i)for i in zip(*b)),sum(b[i][i]for i in range(100)),sum(b[i][99-i]for i in range(100))))
+for t in range(1):input();b=[list(map(int, input().split()))for _ in range(100)];print(f'#{t+1}',max(max(sum(i)for i in b+list(zip(*b))),sum(b[i][i]for i in range(100)),sum(b[i][99-i]for i in range(100))))
