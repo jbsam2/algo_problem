@@ -1,0 +1,1 @@
+for t in range(10):input();s=input();m=input();print(f'#{t+1}',m.count(s))

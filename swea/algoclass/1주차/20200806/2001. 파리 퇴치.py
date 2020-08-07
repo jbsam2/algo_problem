@@ -5,5 +5,5 @@ for t in range(int(input())):
             k=0
             for i in range(m):
                 for j in range(m):k+=b[y+i][x+j]
-            k=max(a,k)
-    print(f'#{t+1}',a) 
+            a=max(a,k)
+    print(f'#{t+1}',a)
