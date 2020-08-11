@@ -1,17 +1,9 @@
-t = int(input())
-
-for tc in range(1,t+1):
-    n = int(input())
-    tmp_str = ''
-    for i in range(n):
-        tmp_char, tmp_value = input().split()
-        tmp_str += tmp_char * int(tmp_value)
-        
-    print(f'#{tc}')
-    cnt = 1
-    for chars in tmp_str:
-        print(chars,end='')
-        if cnt % 10 == 0:
-            print()
-        cnt += 1
+for t in range(int(input())):
+    n=int(input());ts=''
+    for i in range(n):tc,tv=input().split();ts+=tc*int(tv)        
+    print(f'#{t+1}');c=1
+    for i in ts:
+        print(i,end='')
+        if c%10==0:print()
+        c+=1
     print()
