@@ -1,1 +1,2 @@
-print(str(11))
+a='python'
+print(a[3:8])
