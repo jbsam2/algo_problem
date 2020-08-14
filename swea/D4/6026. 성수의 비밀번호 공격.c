@@ -19,7 +19,7 @@ void DFS(int setting, int left)
 {
     if((N-setting)==left)
         answer = (answer + pactorial[left])%MOD;
-    else if(!left)
+    else if(left==0)
         answer = (answer + pow(M,N-setting))%MOD;
     else
     {
@@ -51,7 +51,7 @@ void DFS(int setting, int left)
     }
 }
 
-int main(int argc, char** argv)
+int main()
 {
     int T, tc;
     memset(choose, 1, sizeof(choose));
@@ -67,7 +67,7 @@ int main(int argc, char** argv)
         {
             answer = 0;
             memset(LOOKUP_TABLE,-1,sizeof(LOOKUP_TABLE));
-            DFS(1, M-1 );
+            DFS(1, M-1);
             printf("#%d %d\n", tc,(answer*M)%MOD);
         }
     }
