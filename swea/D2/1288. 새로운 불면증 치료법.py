@@ -1,13 +1,7 @@
-t = int(input())
-
-for tc in range(1,t+1):
-    n = input()
-    tmp_set = set()
-    tmp_num = int(n)
+for t in range(int(input())):
+    n=input();s=set();m=int(n)
     while 1:
-        for num in n:
-            tmp_set.add(num)
-        if len(tmp_set) == 10:
-            break
-        n = str(int(n) + tmp_num)
-    print(f'#{tc} {n}')
+        for i in n:s.add(i)
+        if len(s)==10:break
+        n=str(int(n)+m)
+    print(f'#{t+1}',n)

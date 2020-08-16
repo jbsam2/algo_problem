@@ -1,37 +1,17 @@
 #include <iostream>
 using namespace std;
-
-int abs(int num)
-{
-    if (num<0)
-        return -num;
-    else if (num>0)
-        return num;
-    else
-        return 0;
-}
-
 int main()
 {
-    int t;
-    cin>>t;
-    for(int tc=1;tc<=t;tc++)
+    int t,n,c,r,m,i,p;cin>>t;
+    for(c=1;c<=t;c++)
     {
-        int n;
-        int cnt = 0, min = 987654321;
-        cin>>n;
-        for(int i=0;i<n;i++)
+        r=0,m=1<<30;cin>>n;
+        for(i=0;i<n;i++)
         {
-            int tmp;
-            cin>>tmp;
-            if( abs(tmp) < min )
-            {
-                min = abs(tmp);
-                cnt = 1;
-            }
-            else if (abs(tmp) == min)
-                cnt++;
+            cin>>p;
+            if(abs(p)<m)m=abs(p),r=1;
+            else if (abs(p)==m)r++;
         }
-        printf("#%d %d %d\n",tc,min,cnt);
+        printf("#%d %d %d\n",c,m,r);
     }
 }
