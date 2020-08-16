@@ -1,6 +1,6 @@
-import collections
+from collections import deque
 for t in range(10):
-    n=input();l=collections.deque(list(map(int,input().split())));r=''
+    n=input();l=deque(list(map(int,input().split())));r=''
     while l[-1]!=0:
         for i in range(5):
             tmp=l.popleft()

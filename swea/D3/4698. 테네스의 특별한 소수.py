@@ -1,27 +1,15 @@
-prime = list(range(2, 1000000))
-n = 2
-while n < 1000000:
-    if prime[n - 2] != 0:
-        p = 2 * n - 2
-        while p < 999998:
-            prime[p] = 0
-            p += n
-    n += 1
+p=list(range(2,1000000));n=2
+while n<1000000:
+    if p[n-2]:
+        t=2*n-2
+        while t<999998:p[t]=0;t+=n
+    n+=1
 
-prime_list = []
-for i in prime:
-    if i:
-        prime_list.append(i)
-
-for t in range(1,int(input())+1):
-    d, a, b = map(int,input().split())
-    ans = 0
-    for i in prime_list:
-        if i < a:
-            continue
-        elif i > b:
-            break
+for t in range(int(input())):
+    d,a,b=map(int,input().split());r=0
+    for i in p:
+        if i<a:continue
+        elif i>b:break
         else:
-            if str(d) in str(i):
-                ans += 1
-    print(ans)
+            if str(d) in str(i):r+=1
+    print(f'#{t+1}',r)

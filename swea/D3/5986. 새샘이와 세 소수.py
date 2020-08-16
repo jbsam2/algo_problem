@@ -1,7 +1,7 @@
 prime = list(range(2, 1000))
 n = 2
 while n < 1000:
-    if prime[n - 2] != 0:
+    if prime[n - 2]:
         p = 2 * n - 2
         while p < 998:
             prime[p] = 0

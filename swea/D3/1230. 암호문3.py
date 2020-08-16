@@ -6,6 +6,7 @@ for a in range(10):
             for j in range(int(g)):b.insert((f+j),d.pop(0))
         elif e=="D":
             for j in range(int(g)):del b[f]
-        else:b.append(g)
+        else:
+            b.append(g)
             for j in range(f-1):b.append(d.pop(0))
     print(f'#{a+1}',' '.join(b[:10]))

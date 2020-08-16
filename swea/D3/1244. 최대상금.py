@@ -7,7 +7,6 @@ def sol(c):
             if chk.get((p,c-1),1):chk[(p,c-1)]=0;sol(c-1)
             s[i],s[j]=s[j],s[i]
 
-
 for t in range(int(input())):
     n,c=input().split();r=0;s=list(n);c=int(c);l=len(s);chk={};sol(c)
     print(f'#{t+1}',r)
