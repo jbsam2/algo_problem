@@ -24,4 +24,4 @@ for t in range(1,int(input())+1):
                         break
                     ny += i
                     nx += j
-    print(f'#{t}', sum(board,[]).count(1), sum(board,[]).count(2))
+    print(f'#{t}',sum(board,[]).count(1),sum(board,[]).count(2))
