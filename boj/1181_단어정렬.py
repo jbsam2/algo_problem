@@ -1,0 +1,1 @@
+print(*sorted(sorted({*eval('input(),'*int(input()))}),key=len))

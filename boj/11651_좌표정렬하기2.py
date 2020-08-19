@@ -1,0 +1,1 @@
+for i,j in sorted([*map(int,input().split()[::-1])]for _ in range(int(input()))):print(j,i)
