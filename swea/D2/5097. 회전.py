@@ -1,0 +1,1 @@
+for t in range(int(input())):n,m=map(int,input().split());l=list(map(int,input().split()));print(f'#{t+1}',l[m%n])
