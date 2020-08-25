@@ -1,34 +1,23 @@
 def solution(m, n, board):
-    x=board
-    x2=[]
+    x = [list(i) for i in board]
+    flag = 1
+    while flag:
+        a = []
+        flag = 0
+        for i in range(m - 1):
+            for j in range(n - 1):
+                if x[i][j] == x[i][j + 1] == x[i + 1][j] == x[i + 1][j + 1] != 'b':
+                    a.append([i,j])
+                    flag = 1
 
-    for i in x: 
-        x1=[]
-        for i2 in i:
-            x1.append(i2)
-        x2.append(x1)
+        for k in a:
+            i, j = k[0], k[1]
+            x[i][j], x[i][j + 1], x[i + 1][j], x[i + 1][j + 1] = 'b', 'b', 'b', 'b'
 
-    point=1
-    while point!=0:
-        list=[]
-        point=0
-        for i in range(m-1):
-            for j in range(n-1):
-                if x2[i][j]==x2[i][j+1]==x2[i+1][j]==x2[i+1][j+1]!='팡!':
-                    list.append([i,j])
-                    point+=1
-
-        for i2 in list:
-            i,j=i2[0],i2[1]
-            x2[i][j],x2[i][j+1],x2[i+1][j],x2[i+1][j+1]='팡!','팡!','팡!','팡!'
-
-        for i3 in range(m):
-            for i in range(m-1):
+        for k in range(m):
+            for i in range(m - 1):
                 for j in range(n):
-                    if x2[i+1][j]=='팡!':
-                        x2[i+1][j],x2[i][j]=x2[i][j],'팡!'
+                    if x[i + 1][j] == 'b':
+                        x[i + 1][j], x[i][j] = x[i][j], 'b'
 
-    cnt=0
-    for i in x2:
-        cnt+=i.count('팡!')
-    return cnt
+    return sum(x,[]).count('b')

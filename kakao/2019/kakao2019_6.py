@@ -1,5 +1,5 @@
+import re
 def getScore(word, page):
-    import re
     return re.sub('[^a-z]+', '.', page.lower()).split('.').count(word.lower())
 
 def solution(word, pages):
