@@ -1,7 +1,6 @@
 import numpy as np
 def solution(board):
     answer = 0
-
     blocks = {}
     for i, row in enumerate(board):
         for j, col in enumerate(row):
@@ -13,9 +12,7 @@ def solution(board):
                 blocks[col]["top"] = min(blocks[col]["top"], i)
                 blocks[col]["bottom"] = max(blocks[col]["bottom"], i)
                 blocks[col]["coords"].append([i, j])
-
     board = np.array(board)
-
     flag = 1
     while flag:
         flag = 0
@@ -27,7 +24,7 @@ def solution(board):
                 for j in range(block["left"], block["right"]+1):
                     if board[i][j] == 0:
                         zeros+=1
-                        if board[:i,j].any():
+                        if any(board[:i,j]):
                             can_remove = 0
                             break
                 if not can_remove:
