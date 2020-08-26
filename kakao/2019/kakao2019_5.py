@@ -1,7 +1,8 @@
 import sys
+from copy import deepcopy
 preorder = list();postorder = list()
 def order(nodes,levels,curlevel):
-    n = nodes[:];cur = n.pop(0)
+    n = deepcopy(nodes);cur = n.pop(0)
     preorder.append(cur[0])
     if n:
         for i in range(len(n)):
