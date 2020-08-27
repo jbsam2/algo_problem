@@ -3,5 +3,4 @@ def c(l):
         for i in l:
             for j in range(100-k+1):
                 if i[j:j+k]==i[j:j+k][::-1]:return k
-
 for t in range(10):input();l=[input()for _ in range(100)];l+=list(zip(*l));print(f'#{t+1}',c(l))
