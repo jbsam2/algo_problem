@@ -21,3 +21,13 @@ for t in range(int(input())):
     for i in range(n):
         for j in range(n):print(b[i][j],end=' ')
         print()
+###################################################################################################
+
+for t in range(int(input())):
+    n=int(input());b=[[0]*n for _ in range(n)];l=1;dx=[1,0,-1,0];dy=[0,1,0,-1];r=c=d=0
+    while l<=n*n:
+        b[r][c]=l;nr=r+dy[d];nc=c+dx[d];l+=1
+        if 0<=nr<n and 0<=nc<n and b[nr][nc]==0:r,c=nr,nc
+        else:d=(d+1)%4;r+=dy[d];c+=dx[d]
+    print('#{}'.format(t+1))
+    for i in b:print(*i)
