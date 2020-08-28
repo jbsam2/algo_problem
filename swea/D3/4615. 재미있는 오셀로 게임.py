@@ -1,27 +1,16 @@
-for t in range(1,int(input())+1):
-    d = [0,1,-1]
-    n,m = map(int,input().split())
-    board = [[0]*(n+1) for i in range(n+1)]
-    board[n//2][n//2] = 2
-    board[n//2+1][n//2] = 1
-    board[n//2][n//2+1] = 1
-    board[n//2+1][n//2+1] = 2
-    for m in range(m):
-        y, x, z = map(int,input().split())
-        board[y][x] = z
+for t in range(int(input())):
+    n,m=map(int,input().split());b=[[0]*(n+1) for _ in range(n+1)];d=[0,1,-1]
+    b[n//2][n//2]=2;b[n//2+1][n//2+1]=2;b[n//2+1][n//2]=1;b[n//2][n//2+1]=1
+    for _ in range(m):
+        y,x,z=map(int,input().split());b[y][x]=z
         for i in d:
             for j in d:
-                ny = y + i
-                nx = x + j
-                c=0
-                while not(i == j == 0) and  ny>0 and nx>0 and ny<n+1 and nx<n+1:
-                    c+=1
-                    if not board[ny][nx]:
+                if i==j==0:continue
+                ny=y+i;nx=x+j;c=1
+                while 0<nx<=n and 0<ny<=n:
+                    if b[ny][nx]==0:break
+                    if b[ny][nx]==z:
+                        for p in range(c):b[y+i*p][x+j*p]=z
                         break
-                    if board[ny][nx]==z:
-                        for p in range(c):
-                            board[y+i*p][x+j*p] = z
-                        break
-                    ny += i
-                    nx += j
-    print(f'#{t}',sum(board,[]).count(1),sum(board,[]).count(2))
+                    ny+=i;nx+=j;c+=1
+    s=sum(b,[]);print('#{} {} {}'.format(t+1,s.count(1),s.count(2)))

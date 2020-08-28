@@ -1,26 +1,33 @@
 for t in range(int(input())):
-    n=int(input())
-    b=[[0]*n for i in range(n)]
-    dy=[0,1,0,-1]
-    dx=[1,0,-1,0]
-    direction=row=col=0
-    number=1
-    while number<=n*n:
-        b[row][col]=number
-        number+=1
-        new_row=row+dy[direction]
-        new_col=col+dx[direction]
-        if 0<=new_row<n and 0<=new_col<n and b[new_row][new_col]==0:
-            row,col=new_row,new_col
-        else:
-            direction=(direction+1)%4
-            row+=dy[direction]
-            col+=dx[direction]
+    N = int(input())
 
-    print(f'#{t+1}')
-    for i in range(n):
-        for j in range(n):print(b[i][j],end=' ')
-        print()
+    nums = [[0]*N for _ in range(N)]
+
+    K = N #이동거리
+    d = 1 #방향
+    row = 0 #행
+    col = 0 #열 (초기에는 수평이동이므로 -1)
+    num = 1 #넣을 값
+
+    while True:
+        #수평이동
+        for c in range(K):
+            nums[row][col] = num
+            col += d
+            num+=1
+        #수평이동 끝 이제 수직이동
+        K -= 1
+        if K == 0:
+            break
+        #수직이동
+        for r in range(K):
+            row += d
+            nums[row][col] = num
+            num +=1
+        #수직이동이 끝 수평이동
+        d *= -1
+    print("#{}".format(t+1))
+    for i in nums:print(*i)
 ###################################################################################################
 
 for t in range(int(input())):
