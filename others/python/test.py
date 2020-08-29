@@ -1,8 +1,7 @@
-import re
+key=[[0, 0, 0], [1, 0, 0], [0, 1, 1]]
 
-def solution(expression):
-    ex_split = re.split(r'(\D)',expression)
-    return ex_split    
-    
-x="100-200*300-500+20"
-print(solution(x))
+dim3key = [list(zip(*key))]
+for _ in range(3):
+    dim3key.append(list(zip(*dim3key[-1])))
+
+print(dim3key)

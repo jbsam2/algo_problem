@@ -12,7 +12,6 @@ bool cmp(pair<int,int> p1,pair<int,int> p2)
 
 int solution(vector<int> food_times, long long k)
 {
-    int answer = 0;
     k++;
     int size=food_times.size();
 

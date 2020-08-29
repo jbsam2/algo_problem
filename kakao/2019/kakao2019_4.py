@@ -1,28 +1,10 @@
-from copy import deepcopy
 def solution(food_times, k):
-    if sum(food_times) <= k :
-        return -1
-
-    sort = sorted(deepcopy(food_times))
-    i = 0
-    while i != 0:i += 1
-
-    k -= sort[i] * (len(sort) - i)
-    while k > 0 :
-        i += 1
-        k -= (sort[i] - sort[i-1]) * (len(sort) - i)
-
-    rounds = sort[i]
-    while k < 0:
-        rounds -= 1
-        k += len(sort) - i
-
-    answer = 0
-    for i, val in enumerate(food_times):
-        if val > rounds :
-            if k <= 0 :
-                return i + 1
-            else :
-                k -= 1
-
-    return answer
+    k+=1;l=len(food_times);foods=sorted(enumerate(food_times),key=lambda x:x[1])    
+    for i in range(l):
+        x=l-i;x*=foods[i][1]-(foods[i-1][1]if i else 0)
+        if x>=k:
+            foods=sorted(foods[i:],key=lambda x:x[0])
+            if k%(l-i)==0:return foods[-1][0]+1
+            else: return foods[(k%(l-i))-1][0]+1
+        else: k-=x
+    return -1

@@ -8,7 +8,7 @@ def order(nodes,levels,curlevel):
         for i in range(len(n)):
             if n[i][1][1]==levels[curlevel]:
                 if n[i][1][0]<cur[1][0]:order([x for x in n if x[1][0]<cur[1][0]],levels,curlevel+1)
-                else:order([x for x in n if x[1][0]>cur[1][0]],levels,curlevel+1);break
+                else:order([x for x in n if x[1][0]>cur[1][0]],levels,curlevel+1)
     postorder.append(cur[0])
 
 def solution(nodeinfo):
