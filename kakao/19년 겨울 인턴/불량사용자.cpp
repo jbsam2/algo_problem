@@ -5,7 +5,7 @@ using namespace std;
 
 bool check[9];
 int answer=0;
-set<string> Set;
+set<string> chk;
 
 bool possible(string a,string b)
 {
@@ -24,9 +24,8 @@ void combi(int n,vector<string> user_id, vector<string> banned_id)
         for(int i=0;i<user_id.size();i++)
             if(check[i])
                 tmp+=(i+'0');
-        if(Set.find(tmp)!=Set.end())
-            return;
-        Set.insert(tmp);
+        if(chk.find(tmp)!=chk.end())return;
+        chk.insert(tmp);
         answer++;
         return;
     }

@@ -7,6 +7,9 @@ def s(y,x):
             b[Y][X]=1
             if s(Y,X):return 1
 for t in range(10):
-    input();b=[list(map(int,input()))for _ in range(16)];a=0
-    if s(1,1):a=1
-    print(f'#{t+1}',a)
+    input();b=[list(map(int,input()))for _ in range(16)];r=0;x=y=0
+    for i in range(16):
+        for j in range(16):
+            if b[i][j]==2:y=i;x=j
+    if s(y,x):r=1
+    print(f'#{t+1}',r)

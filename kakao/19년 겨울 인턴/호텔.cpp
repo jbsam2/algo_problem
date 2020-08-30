@@ -1,6 +1,4 @@
-#include <string>
-#include <vector>
-#include <map>
+#include <bits/stdc++.h>
 using namespace std;
 
 map<long long,long long> m;
