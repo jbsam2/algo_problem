@@ -1,19 +1,10 @@
-import re
-from itertools import permutations
-
+import re,itertools
 def solution(expression):
-    op = [x for x in ['*','+','-'] if x in expression]
-    op = [list(y) for y in permutations(op)]
-    ex = re.split(r'(\D)',expression)
-
-    a = []
-    for x in op:
-        _ex = ex[:]
-        for y in x:
-            while y in _ex:
-                tmp = _ex.index(y)
-                _ex[tmp-1] = str(eval(_ex[tmp-1]+_ex[tmp]+_ex[tmp+1]))
-                _ex = _ex[:tmp]+_ex[tmp+2:]
-        a.append(_ex[-1])
-        
-    return max(abs(int(x)) for x in a)
+    olist=[[*x] for x in itertools.permutations([x for x in['*','-','+']if x in expression])]
+    c=re.split(r'(\D)',expression);ret=[]
+    for oset in olist:
+        t=c[:]
+        for o in oset:
+            while o in t:i=t.index(o);t[i-1]=str(eval(t[i-1]+o+t[i+1]));t=t[:i]+t[i+2:]
+        ret.append(abs(int(*t)))
+    return max(ret)

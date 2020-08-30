@@ -1,30 +1,18 @@
-def nexthand(left, right, next, hand):
-    lcount = abs(left[0]- next[0]) + abs(left[1] - next[1])
-    rcount = abs(right[0]- next[0]) + abs(right[1] - next[1])
-    if lcount > rcount:
-        return 'right'
-    elif rcount > lcount:
-        return 'left'
-    else:
-        return hand
+def nhand(rhand,lhand,num,mhand):
+    r=abs(rhand[0]-num[0])+abs(rhand[1]-num[1])
+    l=abs(lhand[0]-num[0])+abs(lhand[1]-num[1])
+    if l>r:return 'right'
+    elif r>l:return 'left'
+    else:return mhand
 
-def solution(numbers, hand):
-    answer = ''
-    board = [(0, 1), (3, 0), (3, 1), (3, 2), (2, 0), (2, 1), (2, 2), (1, 0), (1, 1), (1, 2)]
-    left = (0, 0)
-    right = (0, 2)
-    for number in numbers:
-        if number in [1, 4, 7]:
-            answer += 'L'
-            left = board[number]
-        elif number in [3, 6, 9]:
-            answer += 'R'
-            right = board[number]
+def solution(numbers,hand):
+    answer='';r=(0,0);l=(0,2)
+    nums=((0,1),(3,0),(3,1),(3,2),(2,0),(2,1),(2,2),(1,0),(1,1),(1,2))
+    for i in numbers:
+        if i in [1,4,7]:answer+='L';l=nums[i]
+        elif i in [3,6,9]:answer+='R';r=nums[i]
         else:
-            if nexthand(left, right, board[number], hand) == 'right':
-                answer += 'R'
-                right = board[number]
-            else:
-                answer += 'L'
-                left = board[number]
+            t=nhand(r,l,nums[i],hand)
+            if t=='right':answer+='R';r=nums[i]
+            else:answer+='L';l=nums[i]    
     return answer

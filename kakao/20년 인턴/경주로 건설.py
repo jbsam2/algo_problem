@@ -1,25 +1,13 @@
 def solution(board):
-    dy = [0, 1, 0, -1]
-    dx = [1, 0, -1, 0]
-    size = len(board)
-    visited = [[-1] * size for x in range(size)]
-    q = []
-    q.append([0, 0, 0, 0])
-    q.append([0, 0, 0, 1])
-    visited[0][0] = 0
+    dy=[0,1,0,-1];dx=[1,0,-1,0];n=len(board);cost=[[0]*n for _ in range(n)];q=[]
+    q.append([0,0,0,0]);q.append([0,0,0,1])
     while q:
-        y, x, cost_now, direction = q.pop(0)
-        for d in range(4):
-            ny = y + dy[d]
-            nx = x + dx[d]            
-            if ny < 0 or ny >= size or nx < 0 or nx >= size:
-                continue
-            if board[ny][nx] == 1:
-                continue
-            if abs(direction -  d) == 2:
-                continue
-            new_cost = cost_now + (100 if direction == d else 600)
-            if visited[ny][nx] == -1 or visited[ny][nx] >= new_cost:
-                visited[ny][nx] = new_cost
-                q.append([ny, nx, new_cost, d])
-    return visited[size-1][size-1]
+        y,x,c,d=q.pop(0)
+        for i in range(4):
+            ny=y+dy[i];nx=x+dx[i]
+            if ny<0 or ny>=n or nx<0 or nx>=n:continue
+            if board[ny][nx]==1:continue
+            if abs(d-i)==2:continue
+            nc=c+(100 if d==i else 600)
+            if cost[ny][nx]==0 or cost[ny][nx]>=nc:cost[ny][nx]=nc;q.append([ny,nx,nc,i])
+    return cost[n-1][n-1]
