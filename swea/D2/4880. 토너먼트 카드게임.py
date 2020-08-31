@@ -8,9 +8,6 @@ def vs(a,b):
 
 def sol(a, b):
     if a==b:return a
-    f=sol(a,(a+b)//2)
-    s=sol((a+b)//2+1,b)
-    return vs(f,s)
+    return vs(sol(a,(a+b)//2),sol((a+b)//2+1,b))
 
-for t in range(int(input())):
-    input();l=list(map(int,input().split()));print(f'#{t+1}',sol(1,len(l)))
+for t in range(int(input())):input();l=list(map(int,input().split()));print(f'#{t+1}',sol(1,len(l)))
