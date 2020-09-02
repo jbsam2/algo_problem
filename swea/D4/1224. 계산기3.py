@@ -1,26 +1,22 @@
-l = {'*':2,'+': 1,'(': 0}
-k = {'*':2,'+': 1,'(': 3}
- 
+l={'*':2,'+':1,'(':0};k={'*':2,'+':1,'(':3} 
 for t in range(10):
-    input()
-    rev=[]
-    o=[]
+    input();rev=[];oper=[];s=[]
     for i in input():
         if i.isdigit():rev.append(i)
         elif i==')':
-            while rev[-1]!='(':rev.append(o.pop())
+            while rev[-1]!='(':rev.append(oper.pop())
             rev.pop()
         else:
-            while o and k[i]<=l[o[-1]]:rev.append(o.pop())
-            o.append(i)
-    while o:rev.append(o.pop())
- 	
-    s=[]
+            while oper and k[i]<=l[oper[-1]]:rev.append(oper.pop())
+            oper.append(i)
+    while oper:rev.append(oper.pop())
     for i in rev:
         if i.isdigit():s.append(int(i))
         elif i=='+':s.append(s.pop()+s.pop())
         elif i=='*':s.append(s.pop()*s.pop())
     print('#{}'.format(t+1),*s)
+
+###############################################################################
 
 for t in range(10):
     input();d=[];l=[]

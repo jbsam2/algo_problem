@@ -1,15 +1,27 @@
 for t in range(10):
-    n=int(input());b=[list(map(int,input().split()))for _ in range(n)];r=0
-    for j in range(n):
-        for i in range(n):
-            if b[i][j]==2:b[i][j]=0;break
-            elif b[i][j]==1:break
-        for i in range(n-1,-1,-1):
-            if b[i][j]==1:b[i][j]=0;break
-            elif b[i][j]==2:break
-    for j in range(n):
-        c=0
-        for i in range(n):
-            if b[i][j]==1 and c==0:c=1
-            elif b[i][j]==2 and c==1:c=0;r+=1
-    print(f'#{t+1}',r)
+    input();b=[[*map(int,input().split())]for _ in range(100)];a=0
+    for i in range(100):
+        for j in range(99):
+            if b[j][i]==1:
+                if b[j+1][i]==0:b[j+1][i]=1
+                elif b[j+1][i]==2:a+=1 
+    print('#{}'.format(t+1),a)
+
+
+
+for t in range(10):
+    b=[''.join(i)for i in zip(*[''.join(input().split())for _ in range(int(input()))])];a=0
+    for i in b:a+=i.replace('0','').count('12')
+    print('#{}'.format(t+1),a)
+
+
+for t in range(10):
+    b=[''.join(i)for i in zip(*[''.join(input().split())for _ in range(int(input()))])];a=0
+    for i in b:
+        s=[]
+        for j in i:
+            if j=='1':s.append(j)
+            elif s and j=='2':s.append(j)
+        for j in range(len(s)-1):
+            if s[j]=='1' and s[j+1]=='2':a+=1
+    print('#{}'.format(t+1),a)

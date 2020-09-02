@@ -1,7 +1,22 @@
-key=[[0, 0, 0], [1, 0, 0], [0, 1, 1]]
+arr = [1,2,3]
+N = 3
 
-dim3key = [list(zip(*key))]
-for _ in range(3):
-    dim3key.append(list(zip(*dim3key[-1])))
+sel = [0] * N
+visited = [0] * N
 
-print(dim3key)
+
+def perm(idx):
+    if idx == N:
+        print(sel)
+        return
+
+    for i in range(N):
+        # if visited[i]:
+        #     continue
+        if not visited[i]:
+            sel[idx] = arr[i]
+            visited[i] = 1
+            perm(idx+1)
+            visited[i] = 0
+
+perm(0)
