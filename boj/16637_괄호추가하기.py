@@ -1,12 +1,3 @@
-def g(x,y,c):
-    return x+y if c=='+'else x-y if c=='-'else x*y
-def f(i,c):
-    return c if i>=n else max( f(i+2,g(c,int(s[i]),s[i-1])), f(i+4,g(c,g(int(s[i]),int(s[i+2]),s[i+1]),s[i-1])) if i<n-2 else -99)
-n,s=int(input()),input()
-print(f(2,int(s[0])))
-
-
-
 n=int(input())
 s=[*input()]
 for i in range(len(s)):
