@@ -5,9 +5,7 @@ def vs(a,b):
     else:
         if l[a-1]==3 and l[b-1]==1:return b
         else:return a
-
 def sol(a, b):
     if a==b:return a
     return vs(sol(a,(a+b)//2),sol((a+b)//2+1,b))
-
 for t in range(int(input())):input();l=list(map(int,input().split()));print(f'#{t+1}',sol(1,len(l)))

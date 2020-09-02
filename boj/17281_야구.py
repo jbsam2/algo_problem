@@ -1,5 +1,5 @@
 from itertools import permutations as p
-u=input;a=0;b=[[*map(int,u().split())]for _ in'a'*int(u())]
+a=0;b=[[*map(int,input().split())]for _ in'a'*int(input())]
 for i in p(range(1,9),8):
     i=[*i];i.insert(3,0);c=0;s=0
     for player in b:
