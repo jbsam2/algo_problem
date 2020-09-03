@@ -7,7 +7,7 @@ def sol(y,x):
         if 0<=ny<n and 0<=nx<n and b[ny][nx]!=1 and (ny,nx) not in v:sol(ny,nx)
 
 for t in range(int(input())):
-    n=int(input());b=[list(map(int, input()))for _ in range(n)];v=[];a=0;dy=[-1,1,0,0];dx=[0,0,-1,1]
+    n=int(input());b=[[*map(int,input())]for _ in range(n)];v=[];a=0;dy=[-1,1,0,0];dx=[0,0,-1,1]
     for i in range(n):
         for j in range(n):
             if b[i][j]==2:y,x=i,j    

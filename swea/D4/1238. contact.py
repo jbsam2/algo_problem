@@ -1,6 +1,6 @@
 for t in range(10):
-    c=[[]for _ in range(101)];l,s=map(int,input().split());q=[[s]];v=[s];D=[*map(int,input().split())]
-    for i in range(l//2):c[D[2*i]]+=[D[2*i+1]]
+    c=[[]for _ in range(101)];l,s=map(int,input().split());q=[[s]];v=[s];d=[*map(int,input().split())]
+    for i in range(l//2):c[d[2*i]]+=[d[2*i+1]]
     while q[-1]:
         q+=[[]]
         for i in q[-2]:

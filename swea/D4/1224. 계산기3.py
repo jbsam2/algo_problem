@@ -1,15 +1,15 @@
 l={'*':2,'+':1,'(':0};k={'*':2,'+':1,'(':3} 
 for t in range(10):
-    input();rev=[];oper=[];s=[]
+    input();rev=[];s=[]
     for i in input():
         if i.isdigit():rev.append(i)
         elif i==')':
-            while rev[-1]!='(':rev.append(oper.pop())
+            while rev[-1]!='(':rev.append(s.pop())
             rev.pop()
         else:
-            while oper and k[i]<=l[oper[-1]]:rev.append(oper.pop())
-            oper.append(i)
-    while oper:rev.append(oper.pop())
+            while s and k[i]<=l[s[-1]]:rev.append(s.pop())
+            s.append(i)
+    while s:rev.append(s.pop())
     for i in rev:
         if i.isdigit():s.append(int(i))
         elif i=='+':s.append(s.pop()+s.pop())

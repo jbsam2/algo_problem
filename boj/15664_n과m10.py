@@ -1,15 +1,14 @@
-def sol(depth):
+def sol(depth,s):
     if depth==m:ans.append(tmp[:]);return
-    for i in range(n):
-        if v[i]==0:v[i]=1;tmp[depth]=l[i];sol(depth+1);v[i]=0
+    for i in range(s,n):
+        if v[i]==0:v[i]=1;tmp[depth]=l[i];sol(depth+1,i);v[i]=0
 n,m=map(int,input().split())
 l=sorted([*map(int,input().split())])
 tmp=[0 for i in range(m)]
 v=[0 for i in range(n)]
 ans=[]
-sol(0)
+sol(0,0)
 ans.sort()
 print(*ans[0])
 for i in range(1,len(ans)):
-    if ans[i-1]!=ans[i]:
-        print(*ans[i])
+    if ans[i-1]!=ans[i]:print(*ans[i])
