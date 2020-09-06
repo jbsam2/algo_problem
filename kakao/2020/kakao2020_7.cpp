@@ -1,66 +1,62 @@
-#include <string>
-#include <vector>
-#include <queue>
+#include <bits/stdc++.h>
 using namespace std;
 
-struct possition
-{int y[2],x[2],dir[2];};
-
+int dy[4]={1,-1,0,0},dx[4]={0,0,-1,1};
+int ddy[2]={0,1},ddx[2]={1,0};
 int n;
-int dy[4]={0,1,0,-1}; //우하좌상
-int dx[4]={1,0,-1,0};
-bool flag[101][101][4];
+int c(int y,int x,int k){return 200*y+2*x+k;}
+int check(int y,int x,vector<vector<int>>& board){return 0<=y && y<n && 0<=x && x<n && board[y][x]==0;}
 
-bool check(int y1,int x1,int y2,int x2,vector<vector<int>> board)
-{return (y1<0||n<=y1||x1<0||n<=x1||y2<0||n<=y2||x2<0||n<=x2||board[y1][x1]||board[y2][x2]);}
-
-int solution(vector<vector<int>> board)
-{
-    int answer=0;
-    queue<possition> q;
-    q.push({0,0,0,1,0,2});
-    flag[0][0][0]=flag[0][1][2]=true;
+int solution(vector<vector<int>> board){
     n=board.size();
+    int visit[100][100][2];
+    memset(visit,0,sizeof(visit));
+    visit[0][0][0]=1;
 
-    while(q.empty())
+    queue<int> q;
+    q.push(c(0,0,0));
+    int answer=0;
+
+    while(q.size())
     {
         int l=q.size();
         while(l--)
         {
-            possition now=q.front();
-            q.pop();
-
-            if((now.y[0]==n-1&&now.x[0]==n-1)||(now.y[1]==n-1&&now.x[1]==n-1))return answer;
-
+            int y,x,d,k=q.front();q.pop();
+            y=k/200,x=k%200/2,d=k%2;
+            int y2=y+ddy[d],x2=x+ddx[d];
+            if((x==n-1&&y==n-1)||(x2==n-1&&y2==n-1))return answer;
             for(int i=0;i<4;i++)
             {
-                int ny1=now.y[0]+dy[i],nx1=now.x[0]+dx[i];
-                int ny2=now.y[1]+dy[i],nx2=now.x[1]+dx[i];
-                int dir1=now.dir[0],dir2=now.dir[1];
-
-                if(check(ny1,nx1,ny2,nx2,board)||flag[ny1][nx1][dir1]||flag[ny2][nx2][dir2])continue;
-                q.push({ny1,ny2,nx1,nx2,dir1,dir2});
-                flag[ny1][nx1][dir1]=flag[ny2][nx2][dir2]=true;
+                int ny=y+dy[i],nx=x+dx[i],ny2=y2+dy[i],nx2=x2+dx[i];
+                if(check(ny,nx,board)&&check(ny2,nx2,board)&&!visit[ny][nx][d])visit[ny][nx][d]=1,q.push(c(ny,nx,d));
             }
-
-            for(int i=-1;i<=1;i++)
+            if(d)
             {
-                if(i==0)continue;
-                for(int j=0;j<2;j++)
+                if(check(y,x+1,board)&&check(y2,x2+1,board))
                 {
-                    int y=now.y[j],x=now.x[j];
-
-                    int dir=(now.dir[j]+i+4)%4; //델타에서 방향 인덱스를 한칸만 움직임
-                    int oppodir=(dir+2)%4; //바꾼 방향에서 반대로
-
-                    int ny3=y+dy[dir],nx3=x+dx[dir]; //머리쪽 회전후 위치
-                    int ny4=y+dy[dir]+dy[now.dir[j]],nx4=x+dx[dir]+dx[now.dir[j]]; //회전축 대각선 위치 좌표
-
-                    if(check(ny3,nx3,ny4,nx4,board)||flag[y][x][dir]||flag[ny3][nx3][oppodir])continue;
-                    q.push({y,ny3,x,nx3,dir,oppodir});
-                    flag[y][x][dir]=flag[ny3][nx3][oppodir]=true;
+                    if(!visit[y][x][0])visit[y][x][0]=1,q.push(c(y,x,0));
+                    if(!visit[y+1][x][0])visit[y+1][x][0]=1,q.push(c(y+1,x,0));
+                }
+                if(check(y,x-1,board)&&check(y2,x2-1,board))
+                {
+                    if(!visit[y][x-1][0])visit[y][x-1][0]=1,q.push(c(y,x-1,0));
+                    if(!visit[y+1][x-1][0])visit[y+1][x-1][0]=1,q.push(c(y+1,x-1,0));
                 }
             }
+            else
+            {
+                if(check(y+1,x,board)&&check(y2+1,x2,board))
+                {
+                    if(!visit[y][x][1])visit[y][x][1]=1,q.push(c(y,x,1));
+                    if(!visit[y][x+1][1])visit[y][x+1][1]=1,q.push(c(y,x+1,1));
+                }
+                if(check(y-1,x,board)&&check(y2-1,x2,board))
+                {
+                    if(!visit[y-1][x][1])visit[y-1][x][1]=1,q.push(c(y-1,x,1));
+                    if(!visit[y-1][x+1][1])visit[y-1][x+1][1]=1,q.push(c(y-1,x+1,1));
+                }
+            }            
         }
         answer++;
     }

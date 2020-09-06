@@ -34,9 +34,7 @@ def solution(words,queries):
         t2.push(word[::-1])
 
     for query in queries:
-        if query[0]!='?':
-            val=t1.search(query)
-        else:
-            val=t2.search(query[::-1])
+        if query[0]!='?':val=t1.search(query)
+        else:val=t2.search(query[::-1])
         answer.append(val)
     return answer
