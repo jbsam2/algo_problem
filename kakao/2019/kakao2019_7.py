@@ -3,20 +3,19 @@ def solution(board):
     for i,r in enumerate(board):
         for j,c in enumerate(r):
             if c:
-                if c not in blocks:
-                    blocks[c]={'top':51,'bottom':-1,'left':51,'right':-1,'coords':[]}
-                blocks[c]['top']=min(i,blocks[c]['top'])
-                blocks[c]['bottom']=max(i,blocks[c]['bottom'])
-                blocks[c]['left']=min(j,blocks[c]['left'])
-                blocks[c]['right']=max(j,blocks[c]['right'])
-                blocks[c]['coords'].append((i,j))
+                if c not in blocks:blocks[c]={'t':51,'b':-1,'l':51,'r':-1,'c':[]}
+                blocks[c]['t']=min(i,blocks[c]['t'])
+                blocks[c]['b']=max(i,blocks[c]['b'])
+                blocks[c]['l']=min(j,blocks[c]['l'])
+                blocks[c]['r']=max(j,blocks[c]['r'])
+                blocks[c]['c'].append((i,j))
     rkey=1
     while rkey:
         rkey=0
         for blkey,block in blocks.items():
             rmkey=1;z=0
-            for i in range(block['top'],block['bottom']+1):
-                for j in range(block['left'],block['right']+1):
+            for i in range(block['t'],block['b']+1):
+                for j in range(block['l'],block['r']+1):
                     if board[i][j]==0:
                         z+=1
                         for k in range(i):
@@ -24,7 +23,6 @@ def solution(board):
                         if rmkey==0:break
                 if rmkey==0:break
             if z==2 and rmkey:
-                for i in block['coords']:board[i[0]][i[1]]=0
-                del blocks[blkey]
-                rkey=1;answer+=1;break
+                for i in block['c']:board[i[0]][i[1]]=0
+                del blocks[blkey];rkey=1;answer+=1;break
     return answer
