@@ -6,7 +6,11 @@ def h(q,w):
     return 1
 def c(ws):
     for w in ws:
-        for i in range(len(w)):k1=w[:i]+'?'*(len(w)-i);k2='?'*i+w[i:];m[k1]=m.get(k1,0)+1;m[k2]=m.get(k2,0)+1
+        for i in range(len(w)):
+            k1=w[:i]+'?'*(len(w)-i)
+            k2='?'*i+w[i:]
+            m[k1]=m.get(k1,0)+1
+            m[k2]=m.get(k2,0)+1
 def solution(words, queries):
     answer=[];ml=0
     for w in words:ml=max(ml,len(w))
