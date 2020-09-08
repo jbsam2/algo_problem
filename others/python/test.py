@@ -1,3 +1,5 @@
-l=list(maxlen=3)
-l.append(range(4))
+l={1,2,3,4,5}
+l.remove(1)
+print(l)
+l.remove(1)
 print(l)

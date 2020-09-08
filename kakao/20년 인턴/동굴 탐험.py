@@ -8,7 +8,7 @@ def solution(n, path, order):
         node=q.pop();v[node]=1;e=s2e[node]
         if e:
             dest.remove(e)
-            if v[e]:q.extend([i for i in b[e] if v[i]==0])
+            if v[e]:q+=[i for i in b[e] if v[i]==0]
         elif node in dest:continue
-        q.extend([i for i in b[node] if v[i]==0])
+        q+=[i for i in b[node] if v[i]==0]
     return not dest
