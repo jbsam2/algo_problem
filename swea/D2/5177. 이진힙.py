@@ -1,28 +1,9 @@
-class Tree:
-    def __init__(self):
-        self.l=[0]
-    
-    def sort(self,size):
-        if size>1:
-            if self.l[size]<self.l[size//2]:
-                self.l[size],self.l[size//2]=self.l[size//2],self.l[size]
-                self.sort(size//2)
-    
-    def append(self,num):
-        size=len(self.l)
-        self.l.append(num)
-        self.sort(size)
-
-    def my_sum(self,node):
-        if node<2:return self.l[node]
-        else:return self.l[node]+self.my_sum(node//2)
-
-    def ret(self):
-        last=len(self.l)-1
-        if last>1:return self.my_sum(last//2)
-        else:return 0
-
 for t in range(int(input())):
-    input();tree=Tree()
-    for i in map(int,input().split()):tree.append(i)
-    print('#{}'.format(t+1),tree.ret())
+    input();tree=[0];idx=1;a=0
+    for i in map(int,input().split()):
+        tree.append(i);j=idx
+        while tree[j//2]>tree[j]:tree[j//2],tree[j]=tree[j],tree[j//2];j//=2
+        idx+=1
+    p=len(tree)-1
+    while p>0:a+=tree[p//2];p//=2            
+    print('#{}'.format(t+1),a)

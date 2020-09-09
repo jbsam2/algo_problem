@@ -1,0 +1,1 @@
+for t in range(int(input())):n,m=map(int,input().split());print(f'#{t+1}','ON'if bin(m)[-1:-n-1:-1].count('1')==n else'OFF')

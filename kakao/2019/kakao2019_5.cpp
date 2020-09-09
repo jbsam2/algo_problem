@@ -21,27 +21,21 @@ vector<int> ans1,ans2;
 
 bool cmp(node a,node b)
 {
-    if(a.y==b.y)
-        return a.x<b.x;
-    else
-        return a.y>b.y;
+    if(a.y==b.y)return a.x<b.x;
+    else return a.y>b.y;
 }
 
 void add_node(tree *root,tree *tmp)
 {
     if(tmp->no.x<root->no.x)
     {
-        if(root->l!=NULL)
-            add_node(root->l,tmp);
-        else
-            root->l=tmp;
+        if(root->l!=NULL)add_node(root->l,tmp);
+        else root->l=tmp;
     }
     else
     {
-        if(root->r!=NULL)
-            add_node(root->r,tmp);
-        else
-            root->r=tmp;
+        if(root->r!=NULL)add_node(root->r,tmp);
+        else root->r=tmp;
     }
 }
 void pre(tree *root)
