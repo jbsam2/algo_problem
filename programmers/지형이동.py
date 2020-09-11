@@ -1,5 +1,4 @@
 import heapq
-
 def solution(land, height):
     n=len(land)
     visit=[[1]*n for _ in range(n)]
