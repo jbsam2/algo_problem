@@ -5,9 +5,8 @@ for t in range(int(input())):
     for i in range(1,v+1):
         j=i
         while j:
-            s[j]+=1
             if i==a:t1.append(j)
             if i==b:t2.append(j)
-            j=tr[j]
+            s[j]+=1;j=tr[j]
     for i in t1:
         if i in t2:print(f'#{t+1}',i,s[i]);break
