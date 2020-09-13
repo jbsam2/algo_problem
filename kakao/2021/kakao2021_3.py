@@ -6,8 +6,7 @@ d2=['frontend','backend','-']
 d3=['junior','senior','-']
 d4=['pizza','chicken','-']
 def solution(info,query):
-    ret=[]
-    d={''.join(i):[] for i in pro(d1,d2,d3,d4)}
+    ret=[];d={''.join(i):[] for i in pro(d1,d2,d3,d4)}
     for i in info:
         t=i.split();t1=int(t[-1])
         for j in range(16):
@@ -16,12 +15,8 @@ def solution(info,query):
                 if j&1<<k:t2[k]='-'
             d[''.join(t2)].append(t1)
     for q in query:
-        cnt=0
-        j=q.split(' and ')
-        tmp=j[-1].split();j.pop();j+=[*tmp]
-        score=int(j[-1])
-        j=''.join(j[:4])
+        c=0;j=q.split(' and ');tmp=j[-1].split();j.pop();j+=[*tmp];s=int(j[-1]);j=''.join(j[:4])
         for i in d[j]:
-            if i>=score:cnt+=1
-        ret.append(cnt)
+            if i>=s:c+=1
+        ret.append(c)
     return ret
