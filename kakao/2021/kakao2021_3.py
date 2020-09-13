@@ -9,8 +9,7 @@ def solution(info,query):
     ret=[]
     d={''.join(i):[] for i in pro(d1,d2,d3,d4)}
     for i in info:
-        t=i.split()
-        t1=int(t[-1])
+        t=i.split();t1=int(t[-1])
         for j in range(16):
             t2=t[:4]
             for k in range(4):
@@ -22,9 +21,7 @@ def solution(info,query):
         tmp=j[-1].split();j.pop();j+=[*tmp]
         score=int(j[-1])
         j=''.join(j[:4])
-        try:
-            for i in d[j]:
-                if i>=score:cnt+=1
-        except:pass
+        for i in d[j]:
+            if i>=score:cnt+=1
         ret.append(cnt)
     return ret
