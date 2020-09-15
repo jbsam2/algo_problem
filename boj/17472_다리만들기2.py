@@ -27,36 +27,30 @@ p = list(range(cnt))
 for i in range(N):
     for j in range(M):
         if board[i][j] > 1:
-            cmp = board[i][j]
+            cmp=board[i][j]
             for k in range(4):
-                nx, ny = i, j
-                t =0
-                while True:
+                nx,ny=i,j
+                t=0
+                while 1:
                     t+=1
                     nx, ny = nx + dx[k], ny + dy[k]
-                    if nx<0 or nx>=N or ny<0 or ny>=M:
-                        break
-                    if board[nx][ny]==cmp:
-                        break
+                    if nx<0 or nx>=N or ny<0 or ny>=M:break
+                    if board[nx][ny]==cmp:break
                     if board[nx][ny]!=0 and board[nx][ny]!=cmp:
-                        if (cmp-1,board[nx][ny]-1,t-1) not in G and t>2:
-                          G.append((cmp-1,board[nx][ny]-1,t-1))
+                        if (cmp-1,board[nx][ny]-1,t-1) not in G and t>2:G.append((cmp-1,board[nx][ny]-1,t-1))
                         break
 G.sort(key=lambda x:x[2])
 result = 0
 def find_set(x):
-    if x!=p[x]:
-        p[x] = find_set(p[x])
+    if x!=p[x]:p[x]=find_set(p[x])
     return p[x]
-idx, choice = 0, []
+idx,choice=0,[]
 while len(choice)<cnt-3 and G:
-    u,v,w = G.pop(0)
-    a,b = find_set(u), find_set(v)
-    if a != b:
-        p[b] = a
+    u,v,w=G.pop(0)
+    a,b=find_set(u),find_set(v)
+    if a!=b:
+        p[b]=a
         choice.append(G[idx])
-        result += w
-if not G:
-    print(-1)
-else:
-    print(result)
+        result+=w
+if not G:print(-1)
+else:print(result)
