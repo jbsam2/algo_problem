@@ -9,4 +9,4 @@ for i in range(1,n+1):
     t=sol([n,i])
     if len(t)>len(a):a=t
 print(len(a))
-print(*a)
+print(*a) 
