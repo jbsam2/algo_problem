@@ -1,7 +1,4 @@
-w,h=map(int,input().split())
-l=w+h+w+h
-s=[]
-c=0
+w,h=map(int,input().split());l=w+h+w+h;s=[];c=0
 for i in range(int(input())+1):
     a,b=map(int,input().split())
     s+=[[0,l-b,h+b,b,l-w-b][a]]
