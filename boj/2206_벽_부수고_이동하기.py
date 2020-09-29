@@ -11,6 +11,10 @@ while q:
     for i in range(4):
         Y=y+D[i];X=x+d[i]
         if 0<=X<m and 0<=Y<n:
-            if b[Y][X] and k:q.append((Y,X,l+1,0));c[Y][X][0]=1
-            elif b[Y][X]==0 and c[Y][X][k]==0:q+=[(Y,X,l+1,k)];c[Y][X][k]=1
+            if b[Y][X] and k:
+                q.append((Y,X,l+1,0))
+                c[Y][X][0]=1
+            elif b[Y][X]==0 and c[Y][X][k]==0:
+                q+=[(Y,X,l+1,k)]
+                c[Y][X][k]=1
 print(ret)
