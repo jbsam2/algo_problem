@@ -1,8 +1,8 @@
 from copy import deepcopy
 def solution(n, edges):
     answer=[]
-    for i in range(n-1):
-        for j in range(i,n-1):
+    for i in range(n-2):
+        for j in range(i+1,n-1):
             b=[[]for _ in range(n)]
             tmpedge=deepcopy(edges)
             tmpedge.pop(i)
@@ -41,7 +41,6 @@ def solution(n, edges):
                 for k in b[qq]:
                     if k not in v:q.append(k)
             s3=n-s2-s1
-            if s1==s2==s3:answer=[i,j]
-    return answer
+            if s1==s2==s3:return [i,j]
 
 print(solution(9,[[0,2],[2,1],[2,4],[3,5],[5,4],[5,7],[7,6],[6,8]]))
