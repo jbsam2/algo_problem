@@ -4,6 +4,7 @@ def solution(n, need, make):
         if cost<25:days=i;break
         store+=make[i]
         if need[i]<=store:
+            store-=need[i]
             rev+=cost*need[i]
             cost=100
         else:cost//=2
