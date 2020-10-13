@@ -4,6 +4,7 @@ c=[[[0]*2 for _ in range(m+1)]for _ in range(n+1)] # visit 리스트
 b=[[int(i)for i in input()]for _ in range(n)] # 이동할 맵
 
 q=[];ret=-1
+<<<<<<< HEAD
 q+=[(0,0,1,1)] # y좌표, x좌표, 출발점부터 거리, 벽을 부술수 있는 횟수
 c[0][0][1]=1 # 출발점을 visit에 표시
 while q:
@@ -11,6 +12,13 @@ while q:
     if y==n-1 and x==m-1: #꺼낸 좌표가 도착지인 경우
     	ret=l # 결과값에 그동안 이동한 거리를 넣고 break
     	break
+=======
+q+=[(0,0,1,1)]
+c[0][0][1]=1
+while q:
+    y,x,l,k=q.pop(0)
+    if y==n-1 and x==m-1:ret=l;break
+>>>>>>> 5379023e3f5663c566e24e03247e2fbd5c9202bd
     for i in range(4):
         Y=y+D[i] #델타을 이용 이동할 좌표의 위치를 최신화
         X=x+d[i]
