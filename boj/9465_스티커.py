@@ -1,7 +1,7 @@
 for t in range(int(input())):
     n=int(input())
-    s1=[*map(int,input().split())]
-    s2=[*map(int,input().split())]
-    x=s1[0];y=s2[0];z=0
-    for i in range(1,n):x,y,z=max(y,z)+s1[i],max(x,z)+s2[i],max(x,y)
-    print(max(x,y,z))
+    s=[[0]*2 for _ in 'aa']
+    for i in range(2):s[i]+=[*map(int,input().split())]
+    for j in range(2,n+2):
+        for i in range(2):s[i][j]+=max(s[(i+1)%2][j-1],s[0][j-2],s[1][j-2])
+    print(max(s[0][n+1],s[1][n+1]))
