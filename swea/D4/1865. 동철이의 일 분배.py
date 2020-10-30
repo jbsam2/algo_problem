@@ -1,7 +1,7 @@
 for t in range(int(input())):
     n=int(input());m=1<<n;d=[0]*m;p=[[*map(lambda x:x*.01,map(int,input().split()))]for _ in range(n)];d[0]=1
     for i in range(m):
-        x=sum(1 for j in range(n)if(1<<j)&i)
+        x=bin(i).count('1')
         for j in range(n):
             if(1<<j)&i==0:d[i|(1<<j)]=max(d[i|(1<<j)],d[i]*p[x][j])
     print(f'#{t+1} {d[-1]*100:.6f}')
