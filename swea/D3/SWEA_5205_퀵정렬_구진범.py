@@ -3,8 +3,8 @@ def qsort(l,r):
 def partition(l,r):
     p=l
     while l<r:
-        while(arr[l]<arr[p] and l<r):l+=1
-        while(arr[r]>=arr[p] and l<r):r-=1
+        while arr[l]<arr[p] and l<r:l+=1
+        while arr[r]>=arr[p] and l<r:r-=1
         if l<r:
             if l==p:p=r
             arr[l],arr[r]=arr[r],arr[l]
