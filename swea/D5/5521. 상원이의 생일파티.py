@@ -11,3 +11,15 @@ for t in range(int(input())):
         d+=1
         if d==2:break
     print(f'#{t+1}',c)
+
+
+for t in range(int(input())):
+    n,m=map(int,input().split());f=[[] for i in range(n+1)]
+    for i in range(m):a,b=map(int,input().split());f[a].append(b);f[b].append(a)
+    ret=set();ret.add(1)
+    for i in f[1]:ret.add(i)
+    tmp=list(ret)
+    for i in tmp:
+        for j in f[i]:
+            ret.add(j)
+    print(f'#{t+1}',len(ret)-1)
