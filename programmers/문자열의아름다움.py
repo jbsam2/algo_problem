@@ -33,3 +33,28 @@ def solution(s):
             idx += idx&-idx
         res += k
     return res
+
+
+
+from collections import defaultdict
+
+def solution(s):
+    n = len(s)-1
+    answer = n*(n+1)*(n+2)//6
+    sonny, kane = defaultdict(int), list()
+    prev, consec =  s[0], 0
+
+    for i in s:
+        if i != prev : kane.append((prev, consec)); consec=0
+        consec +=1
+        for x in range(1, consec+1): sonny[i*x] += 1
+        prev = i
+    kane.append((prev,consec))
+
+    for letter, counts in kane:
+        for x in range(1, counts+1):
+            sonny[letter*x] -= counts-x+1
+            answer -= sonny[letter*x]*(counts-x+1)  
+        answer -= (counts*(counts-1)*(counts+1)//6)
+
+    return answer
