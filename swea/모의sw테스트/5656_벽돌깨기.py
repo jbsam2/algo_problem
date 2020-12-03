@@ -10,7 +10,7 @@ def bomb(power, y, x):
         ny = y + dy[i]
         nx = x + dx[i]
         if 0 <= ny < w and 0 <= nx < h:
-            Q.append((power - 1, ny, nx, i))
+            q.append((power - 1, ny, nx, i))
 
 
 for t in range(int(input())):
@@ -25,7 +25,7 @@ for t in range(int(input())):
                 b_cnt[i] += 1
 
     ret = 1<<32
-    Q = deque()
+    q = deque()
     for balls in product(range(w), repeat=n):
         sub_map = deepcopy(my_map)
         block_cnt = b_cnt[:]
@@ -42,8 +42,8 @@ for t in range(int(input())):
             if power > 1:
                 bomb(power, y, x)
 
-            while Q:
-                fire, y, x, i = Q.pop()
+            while q:
+                fire, y, x, i = q.pop()
                 if sub_map[y][x]:
                     remove_cnt[y] += 1
                     power = sub_map[y][x]
@@ -54,7 +54,7 @@ for t in range(int(input())):
                     ny = y + dy[i]
                     nx = x + dx[i]
                     if 0 <= ny < w and 0 <= nx < h:
-                        Q.append((fire - 1, ny, nx, i))
+                        q.append((fire - 1, ny, nx, i))
 
             for r in range(w):
                 block_cnt[r] -= remove_cnt[r]
