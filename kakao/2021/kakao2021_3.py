@@ -1,22 +1,36 @@
-# 시험 끝나고 시간초과 해결
-
-from itertools import product as pro
-d1=['python','java','cpp','-']
-d2=['frontend','backend','-']
-d3=['junior','senior','-']
-d4=['pizza','chicken','-']
-def solution(info,query):
-    ret=[];d={''.join(i):[] for i in pro(d1,d2,d3,d4)}
+def solution(info, query):
+    data = dict()
+    for a in ['cpp', 'java', 'python', '-']:
+        for b in ['backend', 'frontend', '-']:
+            for c in ['junior', 'senior', '-']:
+                for d in ['chicken', 'pizza', '-']:
+                    data.setdefault((a, b, c, d), list())
     for i in info:
-        t=i.split();t1=int(t[-1])
-        for j in range(16):
-            t2=t[:4]
-            for k in range(4):
-                if j&1<<k:t2[k]='-'
-            d[''.join(t2)].append(t1)
+        i = i.split()
+        for a in [i[0], '-']:
+            for b in [i[1], '-']:
+                for c in [i[2], '-']:
+                    for d in [i[3], '-']:
+                        data[(a, b, c, d)].append(int(i[4]))
+
+    for k in data:
+        data[k].sort()
+
+    answer = list()
     for q in query:
-        c=0;j=q.split(' and ');tmp=j[-1].split();j.pop();j+=[*tmp];s=int(j[-1]);j=''.join(j[:4])
-        for i in d[j]:
-            if i>=s:c+=1
-        ret.append(c)
-    return ret
+        q = q.split()
+
+        pool = data[(q[0], q[2], q[4], q[6])]
+        score = int(q[7])
+        l = 0
+        r = len(pool)
+        mid = 0
+        while l < r:
+            mid = (r+l)//2
+            if pool[mid] >= score:
+                r = mid
+            else:
+                l = mid+1
+        answer.append(len(pool)-l)
+
+    return answer
