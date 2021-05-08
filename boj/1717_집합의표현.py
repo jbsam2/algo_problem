@@ -1,18 +1,3 @@
-o=open(0)
-n,_=map(int,o.readline().split())
-s=[-1]*(n+1)
-def f(i):
-    z=i
-    while s[i]+1:i=s[i]
-    if s[z]+1:s[z]=i
-    return i
-for p in o:
-    a,b,c=map(int,p.split())
-    if a:print('YES'if f(b)==f(c)else'NO');continue
-    if b!=c and(x:=f(b))!=(y:=f(c)):s[x]=y
-
-
-
 import sys
 input=sys.stdin.readline
 def f(x):
