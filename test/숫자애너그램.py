@@ -1,0 +1,1 @@
+print("True" if sorted([int(i)for i in input()]) == sorted([int(i)for i in input()]) else "False")
